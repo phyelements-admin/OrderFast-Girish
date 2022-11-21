@@ -18,39 +18,18 @@ namespace OrderFast.DataAcess
         {
             DataTable dataTable = Get.GetResultDataTableBySql("GetOrders");
             List<Orders> order = new List<Orders>();
-            int i = 0;
-            while (i < dataTable.Rows.Count)
+            foreach (DataRow dataRow in dataTable.Rows)
             {
                 order.Add(new Orders
                 {
-                    OrderId = Convert.ToInt32(dataTable.Rows[i]["OrderId"]),
-                    OrderDate = Convert.ToDateTime(dataTable.Rows[i]["OrderDate"]),
-                    OrderedBy = Convert.ToString(dataTable.Rows[i]["OrderedBy"]),
-                    TotalBill = Convert.ToInt32(dataTable.Rows[i]["TotalBill"])
-
+                    OrderId = Convert.ToInt32(dataRow["OrderId"]),
+                    OrderDate = Convert.ToDateTime(dataRow["OrderDate"]),
+                    OrderedBy = Convert.ToString(dataRow["OrderedBy"]),
+                    TotalBill = Convert.ToInt16(dataRow["TotalBill"])
 
                 });
-                i++;
             }
-
-            if (order.Count == 0)
-            {
-                order.Add(new Orders());
-            }
-
             return order;
-            //foreach (DataRow dataRow in dataTable.Rows)
-            //{
-            //    order.Add(new Orders
-            //    {
-            //        OrderId = Convert.ToInt32(dataRow["OrderId"]),
-            //        OrderDate = Convert.ToDateTime(dataRow["OrderDate"]),
-            //        OrderedBy = Convert.ToString(dataRow["OrderedBy"]),
-            //        TotalBill = Convert.ToInt16(dataRow["TotalBill"])
-
-            //    });
-            //}
-            //return order;
 
         }
         public Orders GetOrderById(int id)
