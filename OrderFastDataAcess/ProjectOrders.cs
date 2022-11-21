@@ -49,7 +49,7 @@ namespace OrderFast.DataAcess
                 order.OrderId = Convert.ToInt32(Item[0]);
                 order.OrderDate = Convert.ToDateTime(Item[1]);
                 order.OrderedBy = Convert.ToString(Item[2]);
-                order.TotalBill = Convert.ToInt32(Item[3]);
+                order.TotalBill = Convert.ToDouble(Item[3]);
 
             }
             return order;
@@ -78,7 +78,7 @@ namespace OrderFast.DataAcess
             parameters.Add(new SqlParameter()
             {
                 ParameterName = "@TotalBIll",
-                SqlDbType = SqlDbType.Int,
+                SqlDbType = SqlDbType.Float,
                 Direction = ParameterDirection.Input,
                 Value = o.TotalBill
             });

@@ -11,7 +11,7 @@ namespace OrderFastModels
         public int OrderId { get; set; }
         public DateTime OrderDate { get; set; }
         public string OrderedBy { get; set; }
-        public int TotalBill { get; set; }
+        public double TotalBill { get; set; }
 
     }
 }

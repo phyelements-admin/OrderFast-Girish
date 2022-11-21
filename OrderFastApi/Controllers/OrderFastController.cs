@@ -12,7 +12,7 @@ namespace OrderFastApi.Controllers
     [ApiController]
     public class OrderFastController : ControllerBase
     {
-        ProjectOrders porders = new ProjectOrders();
+        InterfaceProjectOrder porders = new ProjectOrders();
         [Route("getorder")]
         [HttpGet]
         public List<Orders> Get()
